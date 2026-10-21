@@ -11,6 +11,7 @@ import Expenses from "./pages/Expenses";
 import Analytics from "./pages/Analytics";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,12 @@ const router = createBrowserRouter([
         element: <Settings />,
       },
     ],
+  },
+
+  // 404 Page: Handles unknown URLs
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

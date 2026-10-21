@@ -1,0 +1,353 @@
+/* ========================================
+   CATEGORY BREAKDOWN
+======================================== */
+
+.category-breakdown {
+  width: 100%;
+  min-width: 0;
+  padding: 2px;
+  color: #26372b;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.category-breakdown-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.category-breakdown-eyebrow {
+  display: block;
+  color: #77917d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.category-breakdown-title {
+  margin-top: 9px;
+  color: #23372a;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.35px;
+  line-height: 1.4;
+}
+
+.category-breakdown-description {
+  margin-top: 5px;
+  color: #89948a;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.category-breakdown-icon {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3eee0;
+  border-radius: 11px;
+  background: #f1f8ee;
+  color: #4a8b5b;
+}
+
+/* ========================================
+   PIE CHART
+======================================== */
+
+.category-chart-container {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  margin-top: 10px;
+}
+
+.category-chart {
+  width: 100%;
+  height: 205px;
+  min-width: 0;
+}
+
+.category-chart .recharts-responsive-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+}
+
+.category-chart-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  pointer-events: none;
+  text-align: center;
+}
+
+.category-chart-center > span {
+  color: #899489;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.category-chart-center > strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  color: #263d2c;
+  font-size: clamp(14px, 1.2vw, 19px);
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.category-chart-center > small {
+  color: #9aa39a;
+  font-size: 10px;
+}
+
+/* ========================================
+   TOOLTIP
+======================================== */
+
+.category-chart-tooltip {
+  display: flex;
+  min-width: 145px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border: 1px solid #e5ece3;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgb(25 45 25 / 9%);
+}
+
+.category-tooltip-label {
+  color: #899489;
+  font-size: 11px;
+}
+
+.category-tooltip-amount {
+  color: #285b3c;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.category-tooltip-percentage {
+  color: #899489;
+  font-size: 10px;
+}
+
+/* ========================================
+   CATEGORY LIST HEADER
+======================================== */
+
+.category-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #edf0eb;
+  color: #9aa39a;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ========================================
+   CATEGORY LIST
+======================================== */
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 14px;
+}
+
+.category-list-item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-list-main {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.category-list-name {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+}
+
+.category-color-dot {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.category-name {
+  overflow: hidden;
+  color: #667568;
+  font-size: 12px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-list-amount {
+  flex-shrink: 0;
+  color: #293c2e;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+/* ========================================
+   PROGRESS INDICATORS
+======================================== */
+
+.category-progress-track {
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f0f3ef;
+}
+
+.category-progress-fill {
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  transition: width 250ms ease;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.category-breakdown-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #edf0eb;
+  color: #899489;
+  font-size: 10px;
+}
+
+.category-footer-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #34764c;
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.category-breakdown-empty {
+  display: flex;
+  min-height: 300px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+
+.category-empty-icon {
+  display: flex;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #edf7e9;
+  color: #32734b;
+}
+
+.category-breakdown-empty h3 {
+  margin-top: 14px;
+  color: #344738;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.category-breakdown-empty p {
+  max-width: 230px;
+  margin-top: 7px;
+  color: #8b968b;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+  .category-chart {
+    height: 240px;
+  }
+
+  .category-chart-center > strong {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-chart {
+    height: 215px;
+  }
+
+  .category-list {
+    gap: 14px;
+  }
+
+  .category-list-amount {
+    font-size: 11px;
+  }
+
+  .category-name {
+    font-size: 11px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .category-progress-fill {
+    transition: none;
+  }
+}
+
+
+/* Remove focus outline from the category chart */
+.category-chart .recharts-pie,
+.category-chart .recharts-sector,
+.category-chart svg,
+.category-chart svg:focus,
+.category-chart svg *:focus {
+  outline: none !important;
+}

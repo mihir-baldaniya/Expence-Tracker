@@ -1,0 +1,295 @@
+/* ========================================
+   MONTHLY SPENDING CHART
+======================================== */
+
+.spending-chart {
+  width: 100%;
+  min-width: 0;
+  padding: 2px;
+  color: #26372b;
+}
+
+/* Heading */
+
+.spending-chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.spending-chart-eyebrow {
+  display: block;
+  color: #77917d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.spending-chart-title {
+  margin-top: 9px;
+  color: #23372a;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 1.4;
+}
+
+.spending-chart-description {
+  margin-top: 5px;
+  color: #89948a;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.spending-chart-icon {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3eee0;
+  border-radius: 11px;
+  background: #f1f8ee;
+}
+
+.spending-chart-icon span {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #4a8b5b;
+  border-radius: 4px;
+  transform: rotate(45deg);
+}
+
+/* Summary */
+
+.spending-chart-summary {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 23px;
+  padding: 16px;
+  border: 1px solid #e9efe7;
+  border-radius: 13px;
+  background: #f8fbf6;
+}
+
+.spending-chart-summary > div:not(.spending-summary-divider) {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.spending-summary-label {
+  color: #899489;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.spending-summary-value {
+  overflow-wrap: anywhere;
+  color: #294733;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.spending-summary-divider {
+  width: 1px;
+  height: 36px;
+  flex-shrink: 0;
+  background: #e2e9df;
+}
+
+/* Chart body */
+
+/* Chart body */
+
+.spending-chart-body {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 300px;
+  min-height: 300px;
+  margin-top: 24px;
+  overflow: visible;
+}
+
+.spending-chart-body .recharts-responsive-container {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+  min-height: 300px;
+}
+
+.spending-chart-body .recharts-responsive-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 250px !important;
+}
+
+.spending-chart-body .recharts-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+}
+
+.spending-chart-body .recharts-surface {
+  display: block;
+  overflow: visible;
+}
+/* Tooltip */
+
+.spending-tooltip {
+  display: flex;
+  min-width: 145px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 13px 15px;
+  border: 1px solid #e5ece3;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgb(25 45 25 / 9%);
+}
+
+.spending-tooltip-label {
+  color: #899489;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.spending-tooltip-amount {
+  color: #285b3c;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.spending-tooltip-caption {
+  color: #9aa39a;
+  font-size: 10px;
+}
+
+/* Empty state */
+
+.spending-chart-empty {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.spending-empty-icon {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #edf7e9;
+  color: #32734b;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.spending-chart-empty h3 {
+  margin-top: 13px;
+  color: #344738;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.spending-chart-empty p {
+  margin-top: 6px;
+  color: #8b968b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Footer */
+
+.spending-chart-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 15px;
+  border-top: 1px solid #edf0eb;
+}
+
+.spending-chart-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #69786a;
+  font-size: 10px;
+  font-weight: 550;
+}
+
+.spending-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34764c;
+}
+
+.spending-chart-period {
+  color: #99a198;
+  font-size: 10px;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  .spending-chart-summary {
+    gap: 13px;
+    padding: 12px;
+  }
+
+  .spending-summary-value {
+    font-size: 14px;
+  }
+
+  .spending-chart-body {
+    height: 220px;
+    margin-top: 20px;
+  }
+
+  .spending-chart-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* ========================================
+   SVG CHART
+======================================== */
+
+.spending-chart-body {
+  width: 100%;
+  min-width: 0;
+  height: 300px;
+  margin-top: 24px;
+}
+
+.spending-svg-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@media (max-width: 480px) {
+  .spending-chart-body {
+    height: 240px;
+  }
+}

@@ -1,0 +1,979 @@
+/* ========================================
+   Settings Page
+======================================== */
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  padding-bottom: 24px;
+  color: #2e4033;
+}
+
+/* ========================================
+   Page Header
+======================================== */
+
+.settings-page-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.settings-heading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  color: #23864a;
+  background: #eaf5eb;
+  border: 1px solid #dceee0;
+  border-radius: 15px;
+}
+
+.settings-heading-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-eyebrow {
+  color: #358451;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.1px;
+}
+
+.settings-page-header h1 {
+  margin: 5px 0 0;
+  color: #26392b;
+  font-size: 27px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.settings-page-header p {
+  margin: 7px 0 0;
+  color: #829087;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.settings-reset-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 14px;
+  color: #56675a;
+  background: #ffffff;
+  border: 1px solid #dfe8df;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.settings-reset-button:hover {
+  color: #23864a;
+  background: #f1f8f2;
+  border-color: #cfe5d3;
+}
+
+/* ========================================
+   Feedback Messages
+======================================== */
+
+.settings-message,
+.settings-unsaved-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 15px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.settings-message svg,
+.settings-unsaved-message svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.settings-message-success {
+  color: #247944;
+  background: #eef8f0;
+  border-color: #d9eedf;
+}
+
+.settings-message-error {
+  color: #bd4545;
+  background: #fff1f1;
+  border-color: #f3dada;
+}
+
+.settings-unsaved-message {
+  color: #89621e;
+  background: #fff9e9;
+  border-color: #f1e3bc;
+}
+
+/* ========================================
+   Main Form
+======================================== */
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.settings-section {
+  min-width: 0;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e4ebe4;
+  border-radius: 17px;
+  box-shadow: 0 3px 12px rgba(35, 60, 41, 0.025);
+}
+
+.settings-section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 24px;
+}
+
+.settings-section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  color: #25854a;
+  background: #eaf5eb;
+  border: 1px solid #dceee0;
+  border-radius: 12px;
+}
+
+.settings-section-header h2 {
+  margin: 1px 0 0;
+  color: #304235;
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+}
+
+.settings-section-header p {
+  margin: 6px 0 0;
+  color: #859087;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   Form Fields
+======================================== */
+
+.settings-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 20px;
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.settings-field-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 9px;
+  color: #3b4d3f;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.settings-field-label-icon {
+  display: inline-flex;
+  align-items: center;
+  color: #7c9681;
+}
+
+.settings-input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 45px;
+  padding: 11px 13px;
+  color: #36483a;
+  background: #ffffff;
+  border: 1px solid #dfe7df;
+  border-radius: 10px;
+  outline: none;
+  font-family: inherit;
+  font-size: 12px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.settings-input:focus {
+  border-color: #389957;
+  box-shadow: 0 0 0 3px rgba(44, 151, 77, 0.09);
+}
+
+.settings-input::placeholder {
+  color: #a2aca3;
+}
+
+.settings-field-description {
+  margin: 8px 0 0;
+  color: #8a968c;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   Preferences Preview
+======================================== */
+
+.settings-preference-preview {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 25px;
+  padding: 15px;
+  background: #f0f7f0;
+  border: 1px solid #dfeddf;
+  border-radius: 12px;
+}
+
+.settings-preview-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: #27834a;
+  background: #ffffff;
+  border: 1px solid #e0ece1;
+  border-radius: 11px;
+}
+
+.settings-preview-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-preview-content h3 {
+  margin: 0;
+  color: #35523b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-preview-content p {
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+  color: #738878;
+  font-size: 11px;
+  line-height: 1.6;
+  text-transform: capitalize;
+}
+
+.settings-preview-check {
+  flex-shrink: 0;
+  color: #329253;
+}
+
+/* ========================================
+   Notification Toggles
+======================================== */
+
+.settings-toggle-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.settings-toggle-row:first-child {
+  padding-top: 0;
+}
+
+.settings-toggle-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.settings-toggle-content {
+  min-width: 0;
+}
+
+.settings-toggle-content h3 {
+  margin: 0;
+  color: #35473a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-toggle-content p {
+  margin: 6px 0 0;
+  color: #89948b;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* Toggle Switch */
+
+.settings-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 25px;
+  padding: 3px;
+  background: #dce3dc;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.settings-toggle > span {
+  display: block;
+  width: 19px;
+  height: 19px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease;
+}
+
+.settings-toggle.is-checked {
+  background: #27884a;
+}
+
+.settings-toggle.is-checked > span {
+  transform: translateX(18px);
+}
+
+.settings-toggle:focus-visible {
+  outline: 3px solid rgba(42, 150, 77, 0.2);
+  outline-offset: 3px;
+}
+
+/* Notification Info */
+
+.settings-info-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 20px;
+  padding: 12px;
+  color: #748a78;
+  background: #f6f9f6;
+  border: 1px solid #e8eee8;
+  border-radius: 10px;
+}
+
+.settings-info-note svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #6e9877;
+}
+
+.settings-info-note p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   Privacy and Legal
+======================================== */
+
+.settings-document-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.settings-document-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  color: #3e5042;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #e4ebe4;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.settings-document-button:hover {
+  background: #f3f8f3;
+  border-color: #cfe4d2;
+}
+
+.settings-document-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 39px;
+  height: 39px;
+  color: #27854a;
+  background: #eaf5eb;
+  border-radius: 10px;
+}
+
+.settings-document-button > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.settings-document-arrow {
+  flex-shrink: 0;
+  color: #98a59a;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.settings-document-button:hover .settings-document-arrow {
+  color: #23864a;
+  transform: translateX(2px);
+}
+
+.settings-legal-note {
+  margin: 15px 0 0;
+  color: #929d93;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   Data Export
+======================================== */
+
+.settings-export-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  padding: 17px;
+  background: #fbfcfb;
+  border: 1px solid #e5ece5;
+  border-radius: 13px;
+}
+
+.settings-export-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  color: #27854a;
+  background: #eaf5eb;
+  border-radius: 12px;
+}
+
+.settings-export-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-export-content h3 {
+  margin: 0;
+  color: #35473a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-export-content p {
+  margin: 6px 0 0;
+  color: #849087;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.settings-export-content > span {
+  display: block;
+  margin-top: 5px;
+  color: #9aa49b;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.settings-export-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 39px;
+  padding: 0 14px;
+  color: #ffffff;
+  background: #23864a;
+  border: 1px solid #23864a;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.settings-export-button:hover {
+  background: #196f3b;
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   Help Card
+======================================== */
+
+.settings-help-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 17px;
+  background: #f5f9f5;
+  border: 1px solid #e2ece2;
+  border-radius: 13px;
+}
+
+.settings-help-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  color: #27854a;
+  background: #e4f2e6;
+  border-radius: 11px;
+}
+
+.settings-help-card > div:last-child {
+  min-width: 0;
+}
+
+.settings-help-card h3 {
+  margin: 0;
+  color: #35473a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.settings-help-card p {
+  margin: 7px 0 0;
+  color: #7f8f82;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.settings-help-card > div:last-child > span {
+  display: block;
+  margin-top: 10px;
+  color: #9aa49b;
+  font-size: 10px;
+}
+
+/* ========================================
+   Save Bar
+======================================== */
+
+.settings-save-bar {
+  position: sticky;
+  bottom: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px 19px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid #e0e9e0;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(35, 60, 41, 0.09);
+  backdrop-filter: blur(10px);
+}
+
+.settings-save-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #7b897e;
+  font-size: 11px;
+}
+
+.settings-save-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.settings-save-indicator.is-saved {
+  background: #35a95b;
+}
+
+.settings-save-indicator.is-pending {
+  background: #e1a63b;
+}
+
+.settings-save-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-discard-button,
+.settings-save-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 41px;
+  padding: 0 15px;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.settings-discard-button {
+  color: #59695d;
+  background: #ffffff;
+  border: 1px solid #dfe7df;
+}
+
+.settings-discard-button:hover:not(:disabled) {
+  background: #f2f7f2;
+  border-color: #cbdccb;
+}
+
+.settings-save-button {
+  color: #ffffff;
+  background: #23864a;
+  border: 1px solid #23864a;
+}
+
+.settings-save-button:hover:not(:disabled) {
+  background: #196f3b;
+  border-color: #196f3b;
+  transform: translateY(-1px);
+}
+
+.settings-discard-button:disabled,
+.settings-save-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.settings-discard-button:focus-visible,
+.settings-save-button:focus-visible,
+.settings-reset-button:focus-visible,
+.settings-export-button:focus-visible {
+  outline: 3px solid rgba(42, 150, 77, 0.2);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   Legal Document Modal
+======================================== */
+
+.settings-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 35, 25, 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.settings-document-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 650px;
+  max-height: 85%;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e3ebe3;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(20, 40, 25, 0.2);
+}
+
+.settings-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 22px 24px;
+  border-bottom: 1px solid #e9eee9;
+}
+
+.settings-modal-header > div > span {
+  color: #358451;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+
+.settings-modal-header h2 {
+  margin: 7px 0 0;
+  color: #2c4031;
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.settings-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 37px;
+  height: 37px;
+  color: #69776b;
+  background: #f4f7f4;
+  border: 1px solid #e8eee8;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.settings-modal-close:hover {
+  color: #23864a;
+  background: #eaf5eb;
+}
+
+.settings-document-content {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 24px;
+  color: #657368;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.settings-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  border-top: 1px solid #e9eee9;
+}
+
+.settings-modal-done-button {
+  min-height: 40px;
+  padding: 0 20px;
+  color: #ffffff;
+  background: #23864a;
+  border: none;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.settings-modal-done-button:hover {
+  background: #196f3b;
+}
+
+/* ========================================
+   Responsive Design
+======================================== */
+
+@media (max-width: 800px) {
+  .settings-page {
+    gap: 19px;
+  }
+
+  .settings-section {
+    padding: 21px;
+  }
+
+  .settings-page-header {
+    flex-wrap: wrap;
+  }
+
+  .settings-reset-button {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-page-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .settings-heading-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .settings-page-header h1 {
+    font-size: 23px;
+  }
+
+  .settings-page-header p {
+    font-size: 11px;
+  }
+
+  .settings-reset-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .settings-fields-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .settings-document-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .settings-section {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .settings-section-header {
+    gap: 11px;
+    margin-bottom: 20px;
+  }
+
+  .settings-section-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .settings-section-header h2 {
+    font-size: 14px;
+  }
+
+  .settings-section-header p {
+    font-size: 10px;
+  }
+
+  .settings-export-card {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .settings-export-content {
+    flex-basis: calc(100% - 60px);
+  }
+
+  .settings-export-button {
+    width: 100%;
+  }
+
+  .settings-save-bar {
+    bottom: 8px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 13px;
+    padding: 13px;
+  }
+
+  .settings-save-status {
+    font-size: 10px;
+  }
+
+  .settings-save-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .settings-discard-button,
+  .settings-save-button {
+    min-width: 0;
+    padding: 0 9px;
+    font-size: 10px;
+  }
+
+  .settings-modal-overlay {
+    padding: 12px;
+  }
+
+  .settings-modal-header,
+  .settings-document-content {
+    padding: 18px;
+  }
+
+  .settings-modal-header h2 {
+    font-size: 17px;
+  }
+
+  .settings-document-content {
+    font-size: 11px;
+  }
+
+  .settings-modal-footer {
+    padding: 13px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settings-page *,
+  .settings-page *::before,
+  .settings-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

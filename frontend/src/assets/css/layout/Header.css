@@ -1,0 +1,393 @@
+/* ========================================
+   Header
+======================================== */
+
+.header {
+  position: relative;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+  min-height: 86px;
+  padding: 18px 30px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e8eee8;
+}
+
+/* ========================================
+   Header Left
+======================================== */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.header-welcome h2 {
+  margin: 0;
+  color: #263a2c;
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+  overflow-wrap: anywhere;
+}
+
+.header-welcome p {
+  margin: 6px 0 0;
+  color: #879288;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   Header Right
+======================================== */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* Notification Button */
+
+.header-icon-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  color: #68786c;
+  background: #f7faf7;
+  border: 1px solid #e9efe9;
+  border-radius: 13px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.header-icon-button:hover {
+  color: #21834a;
+  background: #eef7ef;
+  border-color: #d9eadc;
+}
+
+.header-notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+
+  width: 7px;
+  height: 7px;
+
+  background: #35a95b;
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+}
+
+/* ========================================
+   Profile Button
+======================================== */
+
+.header-profile-container {
+  position: relative;
+}
+
+.header-profile-button {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 0;
+  padding: 4px 0 4px 4px;
+
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+.header-profile-button:hover .header-profile-name {
+  color: #23864a;
+}
+
+.header-profile-button:focus-visible {
+  outline: 2px solid #23864a;
+  outline-offset: 4px;
+}
+
+/* Navbar Avatar */
+
+.header-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  overflow: hidden;
+
+  color: #23864a;
+  background: #eaf6ed;
+  border: 1px solid #dcefe0;
+  border-radius: 50%;
+
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.header-avatar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.header-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.header-profile-name {
+  max-width: 180px;
+
+  overflow: hidden;
+  color: #304235;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+.header-profile-role {
+  color: #8b968d;
+  font-size: 10px;
+}
+
+.header-profile-chevron {
+  flex-shrink: 0;
+  color: #8b968d;
+  transition: transform 0.2s ease;
+}
+
+.header-profile-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   Profile Dropdown
+======================================== */
+
+.header-profile-dropdown {
+  position: absolute;
+  top: calc(100% + 13px);
+  right: 0;
+
+  z-index: 100;
+
+  width: 260px;
+  padding: 14px;
+
+  background: #ffffff;
+  border: 1px solid #e5ece5;
+  border-radius: 15px;
+
+  box-shadow: 0 12px 35px rgba(35, 60, 41, 0.12);
+
+  animation: headerDropdownIn 0.18s ease;
+}
+
+@keyframes headerDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-dropdown-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 5px 2px 12px;
+}
+
+.header-dropdown-avatar {
+  width: 42px;
+  height: 42px;
+}
+
+.header-dropdown-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.header-dropdown-user-info strong {
+  overflow: hidden;
+  color: #304235;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-dropdown-user-info span {
+  overflow: hidden;
+  color: #8b968d;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-dropdown-divider {
+  height: 1px;
+  background: #edf1ed;
+}
+
+.header-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  margin-top: 8px;
+  padding: 11px;
+
+  color: #536657;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 9px;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.header-dropdown-item:hover {
+  color: #23864a;
+  background: #eff7f0;
+}
+
+/* ========================================
+   Responsive Design
+======================================== */
+
+@media (max-width: 768px) {
+  .header {
+    min-height: 76px;
+    padding: 15px 20px;
+  }
+
+  .header-welcome h2 {
+    font-size: 18px;
+  }
+
+  .header-welcome p {
+    font-size: 11px;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .header-icon-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    gap: 10px;
+    padding: 13px 14px;
+  }
+
+  .header-welcome h2 {
+    font-size: 15px;
+    letter-spacing: -0.3px;
+  }
+
+  .header-welcome p {
+    max-width: 180px;
+    font-size: 10px;
+  }
+
+  .header-right {
+    gap: 9px;
+  }
+
+  .header-profile-button {
+    gap: 7px;
+  }
+
+  .header-profile-info {
+    display: none;
+  }
+
+  .header-profile-chevron {
+    display: none;
+  }
+
+  .header-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-profile-dropdown {
+    right: 0;
+    width: min(260px, calc(100vw - 28px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header *,
+  .header *::before,
+  .header *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

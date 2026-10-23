@@ -4,6 +4,7 @@ import {
   Bell,
   UserRound,
   ChevronDown,
+  Menu,
 } from "lucide-react";
 
 import "../../assets/css/layout/Header.css";
@@ -11,10 +12,9 @@ import "../../assets/css/layout/Header.css";
 const PROFILE_PICTURE_KEY = "findash_profile_picture";
 const PROFILE_STORAGE_KEY = "findash_profile";
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
   const navigate = useNavigate();
 
-  // Profile picture state
   const [profilePicture, setProfilePicture] = useState(() => {
     try {
       return localStorage.getItem(PROFILE_PICTURE_KEY) || "";
@@ -23,7 +23,6 @@ const Header = () => {
     }
   });
 
-  // Profile information state
   const [profile, setProfile] = useState(() => {
     try {
       const savedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
@@ -33,10 +32,8 @@ const Header = () => {
     }
   });
 
-  // Dropdown visibility
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
-  // Synchronize profile information and picture
   useEffect(() => {
     const syncProfile = () => {
       try {
@@ -63,10 +60,8 @@ const Header = () => {
     };
   }, []);
 
-  // User's full name
   const fullName = profile.fullName?.trim() || "My Account";
 
-  // Generate avatar initials
   const initials = fullName
     .split(/\s+/)
     .filter(Boolean)
@@ -74,7 +69,6 @@ const Header = () => {
     .map((word) => word.charAt(0).toUpperCase())
     .join("");
 
-  // Navigate to Profile page
   const handleProfileNavigation = () => {
     setShowProfileMenu(false);
     navigate("/profile");
@@ -84,6 +78,18 @@ const Header = () => {
     <header className="header">
       {/* Left Section */}
       <div className="header-left">
+        {/* Mobile and Tablet Sidebar Toggle */}
+        <button
+          type="button"
+          className="header-menu-button"
+          onClick={onMenuClick}
+          aria-label="Open navigation menu"
+          aria-controls="findash-sidebar"
+          title="Open menu"
+        >
+          <Menu size={22} />
+        </button>
+
         <div className="header-welcome">
           <h2>
             Welcome back
@@ -99,7 +105,6 @@ const Header = () => {
 
       {/* Right Section */}
       <div className="header-right">
-        {/* Notifications */}
         <button
           type="button"
           className="header-icon-button"
@@ -121,25 +126,17 @@ const Header = () => {
             aria-expanded={showProfileMenu}
             aria-label="Open profile menu"
           >
-            {/* Profile Avatar */}
             <div className="header-avatar">
               {profilePicture ? (
-                <img
-                  src={profilePicture}
-                  alt="Profile"
-                  className="header-avatar-image"
-                />
-              ) : initials ? (
-                <span>{initials}</span>
+                <img src={profilePicture} alt="Profile" />
               ) : (
-                <UserRound size={20} />
+                <span>{initials}</span>
               )}
             </div>
 
-            {/* Profile Information */}
             <div className="header-profile-info">
               <span className="header-profile-name">
-                {fullName}
+                {profile.fullName?.trim() || "My Account"}
               </span>
 
               <span className="header-profile-role">
@@ -147,7 +144,6 @@ const Header = () => {
               </span>
             </div>
 
-            {/* Dropdown Arrow */}
             <ChevronDown
               size={16}
               className={`header-profile-chevron ${
@@ -156,37 +152,30 @@ const Header = () => {
             />
           </button>
 
-          {/* Dropdown Menu */}
           {showProfileMenu && (
             <div className="header-profile-dropdown">
-              {/* User Details */}
               <div className="header-dropdown-user">
                 <div className="header-avatar header-dropdown-avatar">
                   {profilePicture ? (
-                    <img
-                      src={profilePicture}
-                      alt="Profile"
-                      className="header-avatar-image"
-                    />
-                  ) : initials ? (
-                    <span>{initials}</span>
+                    <img src={profilePicture} alt="Profile" />
                   ) : (
-                    <UserRound size={20} />
+                    <span>{initials}</span>
                   )}
                 </div>
 
-                <div className="header-dropdown-user-info">
-                  <strong>{fullName}</strong>
+                <div>
+                  <p className="header-dropdown-name">
+                    {profile.fullName?.trim() || "My Account"}
+                  </p>
 
-                  <span>
+                  <p className="header-dropdown-email">
                     {profile.email || "Personal Account"}
-                  </span>
+                  </p>
                 </div>
               </div>
 
               <div className="header-dropdown-divider" />
 
-              {/* My Profile */}
               <button
                 type="button"
                 className="header-dropdown-item"

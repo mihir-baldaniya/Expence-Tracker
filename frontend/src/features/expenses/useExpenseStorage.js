@@ -1,144 +1,133 @@
-import { useCallback, useEffect, useState } from "react";
-import { sampleExpenses } from "./expenseData";
+import { useCallback, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "findash_expenses";
 const EXPENSES_CHANGED_EVENT = "findash_expenses_changed";
 
-function loadExpenses() {
+function readExpenses() {
   try {
     const savedExpenses = localStorage.getItem(STORAGE_KEY);
 
-    if (savedExpenses !== null) {
-      const parsedExpenses = JSON.parse(savedExpenses);
-
-      if (Array.isArray(parsedExpenses)) {
-        return parsedExpenses;
-      }
+    if (savedExpenses === null) {
+      return [];
     }
+
+    const parsedExpenses = JSON.parse(savedExpenses);
+    return Array.isArray(parsedExpenses) ? parsedExpenses : [];
   } catch (error) {
     console.error("Unable to load saved expenses:", error);
+    return [];
   }
-
-  return sampleExpenses;
 }
 
-function saveExpenses(expenses) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+// A single shared in-memory source of truth for every page/component.
+let expensesSnapshot = readExpenses();
+const subscribers = new Set();
 
-    // Notify other hook instances in the same browser tab.
-    window.dispatchEvent(
-      new CustomEvent(EXPENSES_CHANGED_EVENT, {
-        detail: expenses,
-      })
-    );
+function notifySubscribers() {
+  subscribers.forEach((subscriber) => subscriber());
+}
+
+function subscribe(subscriber) {
+  subscribers.add(subscriber);
+
+  return () => {
+    subscribers.delete(subscriber);
+  };
+}
+
+function getSnapshot() {
+  return expensesSnapshot;
+}
+
+function commitExpenses(nextExpenses) {
+  expensesSnapshot = nextExpenses;
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextExpenses));
   } catch (error) {
     console.error("Unable to save expenses:", error);
   }
+
+  // Update components in this tab immediately.
+  notifySubscribers();
+
+  // Also notify other app instances listening in this tab.
+  window.dispatchEvent(
+    new CustomEvent(EXPENSES_CHANGED_EVENT, {
+      detail: nextExpenses,
+    })
+  );
+}
+
+// Keep the shared store in sync if localStorage changes in another tab.
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (event) => {
+    if (event.key !== STORAGE_KEY) return;
+
+    if (event.newValue === null) {
+      expensesSnapshot = [];
+    } else {
+      try {
+        const parsed = JSON.parse(event.newValue);
+        expensesSnapshot = Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        console.error("Unable to synchronize expenses:", error);
+        expensesSnapshot = [];
+      }
+    }
+
+    notifySubscribers();
+  });
+
+  window.addEventListener(EXPENSES_CHANGED_EVENT, (event) => {
+    if (!Array.isArray(event.detail)) return;
+
+    // Ignore our own event if it already points at the current snapshot.
+    if (event.detail === expensesSnapshot) return;
+
+    expensesSnapshot = event.detail;
+    notifySubscribers();
+  });
 }
 
 function useExpenseStorage() {
-  const [expenses, setExpenses] = useState(loadExpenses);
-
-  // Initialize localStorage only when it has no saved data.
-  useEffect(() => {
-    try {
-      if (localStorage.getItem(STORAGE_KEY) === null) {
-        localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify(sampleExpenses)
-        );
-      }
-    } catch (error) {
-      console.error("Unable to initialize expense storage:", error);
-    }
-  }, []);
-
-  // Save changes made by this hook instance.
-  useEffect(() => {
-    saveExpenses(expenses);
-  }, [expenses]);
-
-  // Synchronize this hook instance with updates from other instances.
-  useEffect(() => {
-    const handleCustomChange = (event) => {
-      if (Array.isArray(event.detail)) {
-        setExpenses(event.detail);
-      }
-    };
-
-    // Synchronize changes made in another browser tab.
-    const handleStorageChange = (event) => {
-      if (event.key !== STORAGE_KEY) return;
-
-      if (event.newValue === null) {
-        setExpenses(sampleExpenses);
-        return;
-      }
-
-      try {
-        const parsedExpenses = JSON.parse(event.newValue);
-
-        if (Array.isArray(parsedExpenses)) {
-          setExpenses(parsedExpenses);
-        }
-      } catch (error) {
-        console.error("Unable to synchronize expenses:", error);
-      }
-    };
-
-    window.addEventListener(
-      EXPENSES_CHANGED_EVENT,
-      handleCustomChange
-    );
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener(
-        EXPENSES_CHANGED_EVENT,
-        handleCustomChange
-      );
-
-      window.removeEventListener(
-        "storage",
-        handleStorageChange
-      );
-    };
-  }, []);
+  const expenses = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getSnapshot
+  );
 
   const addExpense = useCallback((expense) => {
     const newExpense = {
       ...expense,
-      id: crypto.randomUUID(),
+      id:
+        typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
       amount: Number(expense.amount),
     };
 
-    setExpenses((previousExpenses) => [
-      newExpense,
-      ...previousExpenses,
-    ]);
-
+    commitExpenses([newExpense, ...expensesSnapshot]);
     return newExpense;
   }, []);
 
   const updateExpense = useCallback((id, updatedData) => {
-    setExpenses((previousExpenses) =>
-      previousExpenses.map((expense) =>
-        expense.id === id
-          ? {
-              ...expense,
-              ...updatedData,
-              amount: Number(updatedData.amount),
-            }
-          : expense
-      )
+    const nextExpenses = expensesSnapshot.map((expense) =>
+      expense.id === id
+        ? {
+            ...expense,
+            ...updatedData,
+            amount: Number(updatedData.amount),
+          }
+        : expense
     );
+
+    commitExpenses(nextExpenses);
   }, []);
 
   const deleteExpense = useCallback((id) => {
-    setExpenses((previousExpenses) =>
-      previousExpenses.filter((expense) => expense.id !== id)
+    commitExpenses(
+      expensesSnapshot.filter((expense) => expense.id !== id)
     );
   }, []);
 

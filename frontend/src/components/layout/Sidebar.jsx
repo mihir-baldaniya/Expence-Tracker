@@ -50,8 +50,9 @@ function Sidebar({ isOpen, onClose }) {
       )}
 
       <aside
-        className={`app-sidebar ${isOpen ? "sidebar-open" : ""}`}
-      >
+  id="findash-sidebar"
+  className={`app-sidebar ${isOpen ? "sidebar-open" : ""}`}
+>
         {/* Brand */}
         <div className="sidebar-brand">
           <NavLink

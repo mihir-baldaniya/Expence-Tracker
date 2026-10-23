@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { CalendarDays, ArrowUpRight, Leaf } from "lucide-react";
 
 import "../assets/css/pages/Dashboard.css";
@@ -8,10 +7,10 @@ import SpendTrendChart from "../features/analytics/SpendTrendChart";
 import CategoryBreakdown from "../features/analytics/CategoryBreakdown";
 import RecentTransactions from "../features/expenses/RecentTransactions";
 
-import { sampleExpenses } from "../features/expenses/expenseData";
+import useExpenseStorage from "../features/expenses/useExpenseStorage";
 
 function Dashboard() {
-  const expenses = useMemo(() => sampleExpenses, []);
+  const { expenses } = useExpenseStorage();
 
   const currentDate = new Date().toLocaleDateString("en-IN", {
     day: "numeric",
@@ -120,22 +119,6 @@ function Dashboard() {
         </div>
       </section>
 
-      {/* Development notice */}
-      <section className="dashboard-notice">
-        <div className="dashboard-notice-icon">
-          <ArrowUpRight size={19} />
-        </div>
-
-        <div className="dashboard-notice-content">
-          <h3>Development preview</h3>
-
-          <p>
-            This dashboard currently displays sample expense data.
-            We'll continue improving the interface before integrating
-            the backend.
-          </p>
-        </div>
-      </section>
     </main>
   );
 }

@@ -391,3 +391,58 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Mobile and Tablet Sidebar Toggle */
+
+.header-menu-button {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  color: #245738;
+  background: #f0f8ef;
+  border: 1px solid #dfece0;
+  border-radius: 12px;
+
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.header-menu-button:hover {
+  background: #dff3d8;
+  color: #176b39;
+}
+
+.header-menu-button:focus-visible {
+  outline: 2px solid #23864a;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1023px) {
+  .header-menu-button {
+    display: inline-flex;
+  }
+
+  .header-left {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-menu-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-left {
+    gap: 9px;
+  }
+}
+

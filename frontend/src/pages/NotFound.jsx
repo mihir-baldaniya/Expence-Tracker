@@ -34,16 +34,7 @@ const NotFound = () => {
             <span>Back to Dashboard</span>
           </Link>
 
-          <button
-            type="button"
-            className="not-found-back-button"
-            onClick={() => window.history.back()}
-          >
-            <ArrowLeft size={18} />
-            <span>Go Back</span>
-          </button>
-        </div>
-
+        </div>  
         {/* Footer */}
         <div className="not-found-footer">
           <span className="not-found-footer-dot" />

@@ -12,6 +12,7 @@ import {
   AlertCircle,
   ShieldCheck,
   CircleUserRound,
+  Trash2,
 } from "lucide-react";
 
 import "../assets/css/pages/Profile.css";
@@ -175,6 +176,31 @@ function Profile() {
     setErrors({});
     setMessage("Unsaved changes have been discarded.");
     setMessageType("info");
+  };
+
+  // Clear all FinDash data after confirmation
+  const handleClearAllData = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to clear all website data? This action cannot be undone."
+    );
+
+    if (!confirmed) return;
+
+    try {
+      // Clear saved data for this website origin.
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // Notify any mounted components that listen for these events.
+      window.dispatchEvent(new Event("profileUpdated"));
+      window.dispatchEvent(new Event("expensesUpdated"));
+
+      // Reload so the app starts with its default empty state.
+      window.location.reload();
+    } catch (error) {
+      console.error("Unable to clear website data:", error);
+      window.alert("Unable to clear website data. Please try again.");
+    }
   };
 
   // Upload or change profile picture by clicking the pencil
@@ -663,6 +689,15 @@ function Profile() {
                 >
                   <Save size={17} />
                   Save Profile
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleClearAllData}
+                  className="profile-clear-all-button"
+                >
+                  <Trash2 size={17} />
+                  Clear All Data
                 </button>
               </div>
             </div>
